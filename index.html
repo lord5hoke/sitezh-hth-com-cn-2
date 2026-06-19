@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华体会 · 简明访问指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f4f6fa;
+            color: #1e2a3a;
+            line-height: 1.7;
+        }
+
+        /* 深色头图——故事开场 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #132d44 100%);
+            color: #e8edf3;
+            padding: 4rem 2rem 3.2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            width: 100%;
+            height: 55px;
+            background: #f4f6fa;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.85;
+            margin-top: 0.3rem;
+            letter-spacing: 0.3px;
+        }
+
+        .hero .opening {
+            max-width: 680px;
+            margin: 1.6rem auto 0;
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.92;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 4rem;
+            background: #f4f6fa;
+        }
+
+        .section-block {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 20, 40, 0.04);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .section-block:hover {
+            box-shadow: 0 8px 24px rgba(0, 20, 50, 0.06);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            border-left: 5px solid #2f6c9f;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+            color: #0b1f30;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 1.5rem 0 0.8rem;
+            color: #1a3a55;
+        }
+
+        p {
+            margin-bottom: 1.1rem;
+            font-size: 1.02rem;
+        }
+
+        a {
+            color: #1f6ba0;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.15s;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #0d3d61;
+            border-bottom-color: #0d3d61;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.2rem 0 0.4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem 1.5rem;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: #1e2f40;
+        }
+
+        .feature-list li::before {
+            content: '·';
+            position: absolute;
+            left: 0.1rem;
+            color: #2f6c9f;
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #0b2b45;
+        }
+
+        .tip-box {
+            background: #edf3fa;
+            border-radius: 18px;
+            padding: 1.2rem 1.6rem;
+            margin: 1.6rem 0 0.2rem;
+            border-left: 4px solid #2f6c9f;
+        }
+
+        .tip-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .scene-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0 0.2rem;
+        }
+
+        .scene-item {
+            flex: 1 1 160px;
+            background: #f8faff;
+            border-radius: 18px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e3eaf3;
+        }
+
+        .scene-item h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1a3a55;
+            margin-bottom: 0.3rem;
+        }
+
+        .scene-item p {
+            font-size: 0.92rem;
+            margin-bottom: 0;
+            color: #2c435b;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce3ed;
+            margin: 1.8rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #4f657c;
+            margin-top: 2.8rem;
+            border-top: 1px solid #dce3ed;
+            padding-top: 1.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero {
+                padding: 3rem 1.2rem 2.6rem;
+            }
+            .content {
+                padding: 1.8rem 1rem 3rem;
+            }
+            .section-block {
+                padding: 1.5rem 1.2rem;
+            }
+            .feature-list {
+                grid-template-columns: 1fr;
+                gap: 0.4rem;
+            }
+            .scene-grid {
+                flex-direction: column;
+            }
+            h2 {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 + 开场短句 -->
+    <div class="hero">
+        <h1>华体会</h1>
+        <p class="tagline">一份关于信息获取与访问环境的简明指南</p>
+        <p class="opening">
+            在数字世界中，找到可靠的信息入口只是第一步。理解其构成、知道如何顺畅地抵达，往往比搜索本身更需要方法。
+        </p>
+    </div>
+
+    <!-- 浅色正文区：承接段落、特点、场景、提示、FAQ 摘要 -->
+    <div class="content">
+
+        <!-- 承接段落 -->
+        <div class="section-block">
+            <h2>从一个名字说起</h2>
+            <p>不论你是在了解品牌动态、查阅服务资料，还是希望确认某个平台的当前情况，<a href="https://sitezh-hth.com.cn">华体会</a> 这个名字都可能在检索结果中出现。它的内容属性偏向信息聚合与社群参考，并非单一的商业站点，更像是一个指向特定领域讨论的索引节点。</p>
+            <p>正因如此，在访问前了解其基础特征、访问时的常见细节，会帮助你更高效地使用它，而不是在跳转和加载中反复试错。</p>
+        </div>
+
+        <!-- 特点列表（知识型） -->
+        <div class="section-block">
+            <h2>几个值得留意的特点</h2>
+            <ul class="feature-list">
+                <li>信息结构以分类目录和话题卡片为主，适合浏览式查阅。</li>
+                <li>部分内容区块依赖外部资源加载，初次渲染可能略慢。</li>
+                <li>页面布局偏向宽屏适配，移动端阅读时可横向滚动。</li>
+                <li>站内搜索功能覆盖标题与摘要，不索引全部正文。</li>
+                <li>链接跳转多为同域内定向，极少出现强制外链。</li>
+                <li>更新节奏不固定，部分板块以周为周期刷新。</li>
+            </ul>
+        </div>
+
+        <!-- 典型访问场景 -->
+        <div class="section-block">
+            <h2>常见的使用场景</h2>
+            <div class="scene-grid">
+                <div class="scene-item">
+                    <h4>资料查证</h4>
+                    <p>通过站内分类索引查找特定时期的讨论或汇总。</p>
+                </div>
+                <div class="scene-item">
+                    <h4>信息对比</h4>
+                    <p>在不同话题卡片之间横向阅读，梳理观点脉络。</p>
+                </div>
+                <div class="scene-item">
+                    <h4>内容收藏</h4>
+                    <p>利用浏览器书签保存具体话题页，便于回看。</p>
+                </div>
+                <div class="scene-item">
+                    <h4>趋势观察</h4>
+                    <p>关注首页推荐卡片，了解当下热度较高的话题。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 温和提示块 -->
+        <div class="section-block">
+            <h2>访问时的小提醒</h2>
+            <div class="tip-box">
+                <p><strong>网络环境：</strong> 由于站点服务器部署位置和链路原因，部分地区可能出现间歇性加载延迟。建议检查本地网络连接，或稍后重试。</p>
+                <p><strong>链接行为：</strong> 页面内所有指向 <a href="https://sitezh-hth.com.cn">华体会</a> 的链接均保持原址跳转，不会附加追踪参数。</p>
+                <p><strong>内容时效：</strong> 部分文章未标注发布日期，阅读时可根据上下文或提及的事件推测时效。</p>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要（知识型） -->
+        <div class="section-block">
+            <h2>常见疑问速览</h2>
+            <div class="faq-item">
+                <strong>为什么有时页面显示不完整？</strong>
+                <p>部分内容依赖异步加载，如果浏览器禁用了 JavaScript 或特定 CDN 被屏蔽，可能导致卡片或图片无法渲染。</p>
+            </div>
+            <div class="faq-item">
+                <strong>可以直接通过链接分享给他人吗？</strong>
+                <p>可以。所有页面 URL 均为静态格式，复制后可直接发送，无需额外处理。</p>
+            </div>
+            <div class="faq-item">
+                <strong>站内有没有留言或评论功能？</strong>
+                <p>当前版本未集成评论模块，信息以单向展示为主。如需反馈，通常通过站点页脚处的联系方式进行。</p>
+            </div>
+        </div>
+
+        <!-- 温和结尾段落 -->
+        <div class="section-block" style="text-align: center; background: #ffffff;">
+            <p style="font-size: 1.05rem; margin-bottom: 0.3rem;">无论你是初次接触，还是已经熟悉其内容结构，</p>
+            <p style="font-size: 1.05rem;">希望这份简明指南能帮助你更顺畅地使用 <a href="https://sitezh-hth.com.cn">华体会</a>，在信息中找到你所需要的片段。</p>
+        </div>
+
+        <div class="footer-note">
+            <p>基于公开信息整理 · 不构成任何服务承诺或商业建议</p>
+        </div>
+    </div>
+
+</body>
+</html>

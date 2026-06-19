@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lord5hoke.github.io/sitezh-hth-com-cn-2/sitemap.xml
