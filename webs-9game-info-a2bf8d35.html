@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九游官网 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #1f1f1f;
+            background-color: #f7f5f2;
+        }
+
+        /* ---------- 深色头图（hero） ---------- */
+        .hero {
+            background: #121418;
+            color: #e8e6e1;
+            padding: 80px 24px 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #f7f5f2;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            transform: scaleX(1.1);
+            opacity: 0.9;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 450;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: #f0ede8;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 680px;
+            margin: 0 auto;
+            color: #b9b6af;
+            font-weight: 300;
+        }
+
+        /* ---------- 浅色正文区 ---------- */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 48px 24px 64px;
+        }
+
+        .intro-block {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 36px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+            margin-bottom: 36px;
+        }
+
+        .intro-block h2 {
+            font-size: 1.6rem;
+            font-weight: 420;
+            letter-spacing: -0.01em;
+            margin-bottom: 20px;
+            color: #1f1f1f;
+            border-left: 4px solid #c74f2b;
+            padding-left: 16px;
+        }
+
+        .intro-block p {
+            margin-bottom: 18px;
+            color: #2e2e2e;
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #c74f2b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 0.5px;
+            transition: color 0.15s ease;
+        }
+
+        a:hover {
+            color: #9b391d;
+            text-decoration-thickness: 1.5px;
+        }
+
+        /* 特点卡片——极简风格 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin: 28px 0 12px;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            background: #f4f2ee;
+            border-radius: 16px;
+            padding: 20px 18px;
+            transition: background 0.2s;
+        }
+
+        .feature-item:hover {
+            background: #ece9e3;
+        }
+
+        .feature-item .num {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #c74f2b;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #1f1f1f;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #3f3f3f;
+            margin-bottom: 0;
+        }
+
+        /* FAQ 摘要区 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 32px 36px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+            margin-bottom: 36px;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.4rem;
+            font-weight: 420;
+            margin-bottom: 20px;
+            color: #1f1f1f;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e6e3de;
+            padding: 14px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #1f1f1f;
+        }
+
+        .faq-item p {
+            color: #3f3f3f;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* ---------- 页尾访问提示 ---------- */
+        .site-footer {
+            background: #121418;
+            color: #b0aca4;
+            text-align: center;
+            padding: 32px 24px;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            line-height: 1.6;
+        }
+
+        .site-footer a {
+            color: #e8e6e1;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .site-footer a:hover {
+            color: #ffffff;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #2c2e33;
+            margin: 20px auto;
+            max-width: 200px;
+        }
+
+        /* ---------- 响应式 ---------- */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 60px 20px 48px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .container {
+                padding: 28px 16px 48px;
+            }
+            .intro-block,
+            .faq-summary {
+                padding: 28px 20px;
+            }
+            .intro-block h2 {
+                font-size: 1.3rem;
+            }
+            .feature-grid {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .feature-item {
+                flex: 1 1 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .intro-block h2 {
+                font-size: 1.15rem;
+                padding-left: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <section class="hero">
+        <h1>九游·不止是站点</h1>
+        <p>一个关于信息、工具与实用内容的安静角落。没有浮夸的标语，只有经过整理的资源与说明。</p>
+    </section>
+
+    <!-- 浅色正文区 -->
+    <div class="container">
+
+        <!-- 第一段：背景与说明 -->
+        <div class="intro-block">
+            <h2>关于这个站点</h2>
+            <p>
+                在互联网的众多角落，有些网站从一开始就带着明确的意图：提供某一类持续更新的信息，或聚合特定方向的工具与链接。
+                这里所呈现的，便是这样一个存在。它并不是一个商业门户，也没有铺天盖地的推广；它更像是一份经过筛选的索引，
+                把分散的内容收敛到同一块版面上。
+            </p>
+            <p>
+                如果你曾经花时间寻找某个领域的可靠信息，大概能理解这种整理的价值。不论是入门指引、分类资源，还是单纯想了解某个话题的基础面貌，
+                这个站点都尝试给出一种相对节制的回应。而它的名字，就是许多人已经熟悉的 <strong>九游</strong>。
+            </p>
+        </div>
+
+        <!-- 第二段：特点与场景（卡片式） -->
+        <div class="intro-block">
+            <h2>它适合什么样的人</h2>
+            <p>
+                无论你是第一次听说，还是回头再来，下面这些方向或许能帮你更快判断它是否对你有用。
+            </p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="num">01</span>
+                    <h3>信息查找者</h3>
+                    <p>不想在搜索结果里反复跳转，希望一个页面就能看到分类整理后的资源。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="num">02</span>
+                    <h3>轻度研究者</h3>
+                    <p>需要了解某个主题的基础框架、常用工具或参考来源，但不必深入技术细节。</p>
+                </div>
+                <div class="feature-item">
+                    <span class="num">03</span>
+                    <h3>日常浏览者</h3>
+                    <p>只是随便看看，却意外发现某个板块正好解决了最近的小疑问。</p>
+                </div>
+            </div>
+            <p style="margin-top: 16px;">
+                当然，这些场景并不互斥。很多人最初只是顺着链接点进来，后来却把这里当成了一个偶尔翻翻的起点。
+                这种自然而然的接触，或许就是它最舒服的存在方式。
+            </p>
+        </div>
+
+        <!-- 第三段：可信说明 + 自然引用链接 -->
+        <div class="intro-block">
+            <h2>可信与克制的内容边界</h2>
+            <p>
+                在信息过载的年代，我们更倾向于相信那些不急于兜售什么的东西。这个站点上的内容大多来自公开资料、官方文档或长期维护者的整理，
+                没有耸动的标题，也不会在每一行字后面藏一个推广链接。它的叙述语气是平稳的，结构是清晰的，
+                你可以很自然地把它当作一个参考节点。
+            </p>
+            <p>
+                如果你对这个站点感到好奇，或者想看看它到底提供了哪些板块，不妨直接前往它的主站看一看。
+                那里保留了最完整的结构，所有分类和入口都一目了然。
+                你可以通过 <a href="https://webs-9game.com">九游官网</a> 直达首页，然后按自己的节奏慢慢浏览。
+                不需要注册，也不需要面对弹窗式的引导——它更像一本翻开的杂志，等你读到自己感兴趣的那一页。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要（两则，克制而真实） -->
+        <div class="faq-summary">
+            <h2>你可能想了解的两件事</h2>
+            <div class="faq-item">
+                <strong>这个网站是官方性质的吗？</strong>
+                <p>它是九游相关内容的主要呈现站点，信息由维护团队持续更新，风格偏向客观整理，而非个人博客或临时页面。</p>
+            </div>
+            <div class="faq-item">
+                <strong>内容多久更新一次？</strong>
+                <p>没有固定的更新日历，但分类和资源会跟随实际情况调整。如果你发现某个链接失效或板块过时，通常会在下个版本中得到修正。</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <footer class="site-footer">
+        <p>以上介绍基于站点公开内容整理，仅作参考。</p>
+        <p>如需获取完整信息，建议直接访问 <a href="https://webs-9game.com">九游官网</a> 阅读原始页面。</p>
+        <hr>
+        <p style="font-size: 0.8rem; color: #7d7970;">· 自然 · 克制 · 叙述 ·</p>
+    </footer>
+
+</body>
+</html>
