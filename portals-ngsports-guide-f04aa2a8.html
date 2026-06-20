@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NG体育 · 知识库 & 快速入口 | portals-ngsports.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f7;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 32px 20px 64px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1040px;
+            width: 100%;
+        }
+
+        /* 顶部标识区 */
+        .site-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            color: #475569;
+        }
+
+        .site-badge span {
+            background: #d1d5db;
+            border-radius: 4px;
+            padding: 2px 10px;
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        /* 主 Hero 区 — 目录感起始 */
+        .hero-toc {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            padding: 40px 36px 36px;
+            margin-bottom: 32px;
+            transition: box-shadow 0.18s ease;
+        }
+
+        .hero-toc:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .hero-toc h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .hero-toc .sub {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 28px;
+            border-left: 3px solid #3b82f6;
+            padding-left: 16px;
+        }
+
+        .hero-toc p {
+            color: #334155;
+            margin-bottom: 24px;
+            max-width: 680px;
+        }
+
+        .hero-toc .meta-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 28px;
+            font-size: 0.9rem;
+            color: #475569;
+            border-top: 1px solid #e9edf2;
+            padding-top: 20px;
+            margin-top: 8px;
+        }
+
+        .meta-line .tag {
+            background: #f1f5f9;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 分区卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            padding: 28px 28px 32px;
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .card .card-icon {
+            font-size: 1.6rem;
+            margin-bottom: 14px;
+            display: inline-block;
+            background: #f1f5f9;
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563eb;
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 16px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            padding: 6px 0;
+            font-size: 0.92rem;
+            color: #334155;
+            border-bottom: 1px dashed #eef2f6;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .card li::before {
+            content: "·";
+            color: #3b82f6;
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .card .small-note {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 10px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 12px;
+        }
+
+        /* 提示区 & 相关信息区 — 两栏自适应 */
+        .info-panel {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+
+        .tip-box {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            padding: 28px 28px 30px;
+        }
+
+        .tip-box h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip-box p {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 14px;
+        }
+
+        .tip-box .inset-link {
+            background: #f8fafc;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin: 12px 0 6px;
+            font-size: 0.95rem;
+        }
+
+        .related-box {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            padding: 28px 28px 30px;
+        }
+
+        .related-box h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 18px;
+        }
+
+        .related-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .related-item:last-child {
+            border-bottom: none;
+        }
+
+        .related-item .label {
+            font-weight: 450;
+        }
+
+        .related-item .value {
+            color: #2563eb;
+            font-weight: 450;
+        }
+
+        /* 常见问题摘要 (FAQ) */
+        .faq-section {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            padding: 28px 32px 30px;
+            margin-bottom: 28px;
+        }
+
+        .faq-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #64748b;
+            padding-left: 0;
+        }
+
+        .faq-item .a a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px dotted #b9c7da;
+        }
+
+        .faq-item .a a:hover {
+            border-bottom: 1px solid #2563eb;
+        }
+
+        /* 底部 */
+        .footer-note {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.8rem;
+            padding: 20px 0 8px;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-note a {
+            color: #1e293b;
+            text-decoration: underline 1px dotted #a0afbe;
+            text-underline-offset: 3px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 780px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .info-panel {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .hero-toc {
+                padding: 28px 20px;
+            }
+
+            .hero-toc h1 {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 14px 48px;
+            }
+
+            .card, .tip-box, .related-box, .faq-section {
+                padding: 22px 18px;
+            }
+
+            .hero-toc {
+                padding: 24px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 轻量目录标识 -->
+    <div class="site-badge">
+        <span>📋 知识库</span>
+        <span>🔍 索引页</span>
+    </div>
+
+    <!-- Hero / 目录感说明 -->
+    <div class="hero-toc">
+        <h1>NG体育 · 用途速览</h1>
+        <div class="sub">从一个使用者的视角，快速识别这个平台能做什么</div>
+        <p>
+            无论你是第一次接触 <a href="https://portals-ngsports.com" style="color:#2563eb; text-decoration: underline 1px dotted #b9c7da; text-underline-offset: 4px; font-weight: 500;">NG体育</a>，
+            还是想确认它是否匹配你的习惯，这里汇集了最核心的功能方向、场景提示和常见疑问。
+            页面按「知识库入口」的方式组织，没有多余装饰，只呈现你真正需要的信息。
+        </p>
+        <div class="meta-line">
+            <span>📌 站点定位 · 综合体育服务</span>
+            <span>🧩 内容版本 · 2025 简明索引</span>
+            <span class="tag">#快速识别</span>
+            <span class="tag">#目录感</span>
+        </div>
+    </div>
+
+    <!-- 特点 + 场景 双卡片 -->
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">⚙️</div>
+            <h2>特点解析</h2>
+            <ul>
+                <li>多项目覆盖 —— 从主流赛事到细分运动</li>
+                <li>信息结构清晰 —— 分类、筛选、直达内容</li>
+                <li>低门槛浏览 —— 无需注册即可了解大部分版块</li>
+                <li>持续更新 —— 数据与内容保持同步</li>
+            </ul>
+            <div class="small-note">基于公开信息整理 · 方向供参考</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🏟️</div>
+            <h2>适用场景</h2>
+            <ul>
+                <li>想快速浏览体育内容与分类</li>
+                <li>查找特定赛事或活动信息</li>
+                <li>对比不同板块的侧重点</li>
+                <li>作为日常体育资讯的补充来源</li>
+            </ul>
+            <div class="small-note">实际体验以网站自身为准</div>
+        </div>
+    </div>
+
+    <!-- 提示区 + 相关信息区 -->
+    <div class="info-panel">
+        <div class="tip-box">
+            <h3>💡 提示区</h3>
+            <p>
+                页面内容均基于 <a href="https://portals-ngsports.com" style="color:#2563eb; text-decoration: none; font-weight: 500;">NG体育</a> 的公开结构整理。
+                如果你在寻找一个具有目录感的体育信息入口，可以直接从上方特点卡片入手，或浏览常见问题摘要。
+            </p>
+            <div class="inset-link">
+                🔗 站点主域：<span style="font-family: monospace; background: #f1f5f9; padding: 0 8px; border-radius: 4px;">portals-ngsports.com</span>
+                <span style="display: block; margin-top: 6px; font-size: 0.85rem; color: #64748b;">建议使用桌面或平板设备获得完整布局体验</span>
+            </div>
+        </div>
+        <div class="related-box">
+            <h3>📌 相关信息</h3>
+            <div class="related-item">
+                <span class="label">平台类型</span>
+                <span class="value">体育内容聚合</span>
+            </div>
+            <div class="related-item">
+                <span class="label">主要语言</span>
+                <span class="value">中文 · 英文</span>
+            </div>
+            <div class="related-item">
+                <span class="label">内容更新</span>
+                <span class="value">定期</span>
+            </div>
+            <div class="related-item">
+                <span class="label">访问方式</span>
+                <span class="value">浏览器直接打开</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要区 -->
+    <div class="faq-section">
+        <h3>❓ 常见问题摘要</h3>
+        <div class="faq-item">
+            <div class="q">这个网站是做什么的？</div>
+            <div class="a">一个围绕体育内容与信息组织的站点，你可以通过 <a href="https://portals-ngsports.com">NG体育</a> 快速浏览不同板块，了解赛事、项目或相关资讯。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">需要注册才能使用吗？</div>
+            <div class="a">大部分浏览和分类查看功能无需注册，具体以网站实际流程为准。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">如何找到某个特定体育项目？</div>
+            <div class="a">建议使用网站内的导航或分类筛选功能，项目覆盖较广，通常可以通过关键词或列表定位。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">内容更新频率如何？</div>
+            <div class="a">根据公开信息，内容会保持持续更新，具体时效以页面标注为准。</div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>基于公开信息整理 · 旨在提供快速识别途径 · 具体功能以 <a href="https://portals-ngsports.com">NG体育</a> 为准</span>
+    </div>
+</div>
+</body>
+</html>
