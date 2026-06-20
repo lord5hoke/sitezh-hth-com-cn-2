@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日常检索中的对照与延伸 · NG体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafaf9;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: #1e1e1e;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrapper {
+            max-width: 680px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 开场短句 —— 留有呼吸 */
+        .opening {
+            font-size: 1.125rem;
+            font-weight: 380;
+            letter-spacing: 0.02em;
+            color: #3b3b3b;
+            margin-top: 2.4rem;
+            margin-bottom: 1.2rem;
+            padding-left: 0.25rem;
+            border-left: 2px solid #d4d4d4;
+            padding-left: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .opening:hover {
+            border-left-color: #9c9c9c;
+        }
+
+        /* 普通正文 */
+        p {
+            font-size: 0.975rem;
+            font-weight: 350;
+            color: #2c2c2c;
+            margin-bottom: 1.25rem;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* 子标题层级 —— 清晰但克制 */
+        .section-head {
+            font-size: 1.05rem;
+            font-weight: 480;
+            letter-spacing: 0.01em;
+            margin: 2rem 0 0.75rem 0;
+            color: #1a1a1a;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 0.35rem;
+        }
+
+        /* 承接段落可以有更安静的样式 */
+        .quiet-block {
+            background-color: #ffffff;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            margin: 1rem 0 1.4rem 0;
+            border: 1px solid #efefef;
+        }
+
+        .quiet-block p {
+            margin-bottom: 0.65rem;
+            font-size: 0.925rem;
+        }
+
+        .quiet-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 特点列表 —— 无符号，仅留白分割 */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding: 0.75rem 0 0.75rem 1.6rem;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95rem;
+            font-weight: 350;
+            color: #2e2e2e;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #b0b0b0;
+            font-weight: 300;
+        }
+
+        /* 链接默认样式 */
+        a {
+            color: #1f1f1f;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #c6c6c6;
+            transition: text-decoration-color 0.25s, color 0.2s;
+        }
+
+        a:hover {
+            color: #000000;
+            text-decoration-color: #7a7a7a;
+        }
+
+        /* 温和结尾 */
+        .closing-note {
+            margin: 2.8rem 0 1rem 0;
+            padding-top: 1.2rem;
+            border-top: 1px solid #eaeaea;
+            font-size: 0.9rem;
+            color: #4f4f4f;
+            font-style: normal;
+            letter-spacing: 0.01em;
+        }
+
+        .closing-note span {
+            display: inline-block;
+        }
+
+        /* FAQ 摘要 — 极简 */
+        .faq-mini {
+            margin: 2.2rem 0 1.5rem;
+            padding: 0.8rem 0 0.2rem 0;
+        }
+
+        .faq-mini p {
+            margin-bottom: 0.4rem;
+            font-size: 0.88rem;
+            color: #404040;
+        }
+
+        .faq-mini strong {
+            font-weight: 470;
+            color: #1a1a1a;
+        }
+
+        /* 场景小卡片 — 不加修饰 */
+        .scene-note {
+            background: #ffffff;
+            border: 1px solid #ebebeb;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0 1.2rem 0;
+        }
+
+        .scene-note p {
+            font-size: 0.925rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .scene-note p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 500px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            .opening {
+                font-size: 1rem;
+                padding-left: 0.75rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+            .feature-list li {
+                font-size: 0.875rem;
+                padding-left: 1.3rem;
+            }
+            .quiet-block {
+                padding: 1rem 1rem;
+            }
+            .scene-note {
+                padding: 1rem 1rem;
+            }
+        }
+
+        /* 极窄下更宽松 */
+        @media (max-width: 380px) {
+            .page-wrapper {
+                padding: 0 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+    <!-- 开场短句：日常查询的起点 -->
+    <div class="opening">
+        有些查询，开始于一个名字，然后才慢慢展开为一条线索。
+    </div>
+
+    <!-- 承接段落1：从对照到延伸 -->
+    <p>
+        在信息流里反复比较、在几个页面之间来回对照，是许多人熟悉的日常。一个平台是否契合自己的习惯，往往不在首页的标语里，而在那些细碎的功能点、内容的组织方式、以及长期使用的感受中。从这样的视角出发，我时不时会打开 <a href="https://mains-ngsports.com">NG体育</a> 的页面，把它当作一个参考坐标，不是为了立刻决定什么，而是为了在浏览中逐渐形成自己的判断。
+    </p>
+
+    <!-- 特点列表：克制地列出几个可观察的侧面 -->
+    <div class="section-head">几个常被提及的侧面</div>
+    <ul class="feature-list">
+        <li>内容分类清晰，从赛事动态到背景信息都有相对固定的板块，便于定向查阅。</li>
+        <li>界面没有过度铺陈，信息密度适中，阅读时不需要反复适应布局变化。</li>
+        <li>更新节奏稳定，不会出现长期未更新的栏目，也不会突然堆叠大量推送。</li>
+        <li>在移动设备上的排版保留了一致性，横竖屏切换后段落与标题仍保持原有层级。</li>
+    </ul>
+
+    <!-- 场景段落: 延伸阅读的日常 -->
+    <div class="scene-note">
+        <p><strong>一个延伸的片段</strong></p>
+        <p>有一阵子我对某项运动的赛季安排产生兴趣，试着在几个不同站点之间交叉核对时间线。在这个过程中，<a href="https://mains-ngsports.com">NG体育</a> 的赛事归档页面成为我反复对照的底本之一。它没有附加太多评论，只是把日期、地点和结果按顺序排列，这反而让核对变得直接。后来我把那个页面保留在书签文件夹里，和另外两个来源并列，作为长期使用的参考组合。</p>
+        <p style="margin-top: 0.6rem; font-size: 0.85rem; color: #666;">—— 当然，这只是个人用法，不代表普遍情况。</p>
+    </div>
+
+    <!-- 提示 / 小 FAQ 摘要 —— 自问自答式 -->
+    <div class="faq-mini">
+        <p><strong>FAQ 摘要 · 基于常见询问</strong></p>
+        <p><strong>问</strong> 这个站点的定位是什么？<br>
+        <strong>答</strong> 它主要提供体育相关内容的聚合与索引，适合作为信息查询和延伸阅读的起点之一。</p>
+        <p><strong>问</strong> 内容偏向哪些方面？<br>
+        <strong>答</strong> 覆盖多种运动项目，信息以整理和归纳为主，风格偏重事实陈述。</p>
+        <p><strong>问</strong> 是否有必要注册？<br>
+        <strong>答</strong> 浏览大部分内容不需要注册，部分互动或订阅功能可能需要。</p>
+    </div>
+
+    <!-- 温和结尾：回到日常节奏 -->
+    <div class="closing-note">
+        <span>网站本身不会替你做出判断，但它可以成为那个让你反复回来对照的安静坐标。下一次在浏览器里打开多个标签页时，也许可以把它放在其中一个，作为延伸阅读的参照。</span>
+    </div>
+
+    <!-- 最后留一行极小的版本感（无功能，仅为视觉留白节奏） -->
+    <div style="margin-top: 2.2rem; height: 1px; background: #f0f0f0; width: 100%;"></div>
+    <div style="margin-top: 0.5rem; font-size: 0.65rem; color: #c2c2c2; letter-spacing: 0.05em; text-align: right;">·</div>
+
+</div>
+
+</body>
+</html>
